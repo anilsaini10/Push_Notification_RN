@@ -21,9 +21,12 @@ import {
 
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import PushNotification from "react-native-push-notification";
-
+import md5 from "react-native-md5";
+import { sha256 } from 'react-native-sha256';
 var AWS = require('aws-sdk');
 AWS.config.update({region:'us-east-1'});
+
+// hex_md5: 8c50795fee578cad933eac0d64eb7a0e
 
 const App = () => {
 
@@ -99,28 +102,29 @@ const App = () => {
   }
 
   useEffect(() => {
-    // PushNotification.configure({
+    
+    // let hex_md5v = md5.hex_md5( Date.now() +"" );
+    // console.log(">>>>hex_md5:", hex_md5v);
 
-    //   onRegister: function (token) {
-    //     console.log("TOKEN:", token);
-    //   },
+    // let b64_md5v = md5.b64_md5( Date.now() +"" );
+    // console.log(">>>>b64_md5:", b64_md5v);
 
-    //   onNotification: function (notification) {
-    //     console.log("NOTIFICATION:", notification);
+    // let str_md5v = md5.str_md5( Date.now() +"" );
+    // console.log(">>>>str_md5:", str_md5v);
 
-    //     // notification.finish(PushNotificationIOS.FetchResult.NoData);
-    //   },
+    // let hex_hmac_md5v = md5.hex_hmac_md5("my_key", Date.now() +"" );
+    // console.log(">>>>hex_hmac_md5:", hex_hmac_md5v);
 
-    //   permissions: {
-    //     alert: true,
-    //     badge: true,
-    //     sound: true,
-    //   },
+    // let b64_hmac_md5v = md5.b64_hmac_md5("my_key", Date.now() +"" );
+    // console.log(">>>>b64_hmac_md5:", b64_hmac_md5v);
 
-    //   popInitialNotification: true,
-    //   requestPermissions: true,
-
-    // });
+    // let str_hmac_md5v = md5.str_hmac_md5("my_key", Date.now() +"" );
+    // console.log(">>>>str_hmac_md5:", str_hmac_md5v);
+ 
+    sha256("Test").then( hash => {
+      console.log("SHA-256 =>",hash);
+  })
+ 
   }, [])
 
 
