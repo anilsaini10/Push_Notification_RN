@@ -37,21 +37,21 @@
        <!-- You must replace the names in the service and receiver tags
      with names that are appropriate to your package. -->
 
- <!-- <service
+ <service
      android:name="push_notificationjobservice"
      android:permission="android.permission.BIND_JOB_SERVICE"
      android:enabled="true"
-     android:exported="false" /> -->
+     android:exported="false" />
 
  <!-- This is needed for devices with older ADM versions -->
- <!-- <service
+ <service
      android:name="push_notificationservice"
      android:enabled="true"
-     android:exported="false" /> -->
+     android:exported="false" />
 
- <!-- <receiver
+ <receiver
      android:name="push_notificationreceiver"
-
+     android:exported="false"
      android:permission="com.amazon.device.messaging.permission.SEND" >
 
      <intent-filter>
@@ -60,7 +60,7 @@
 
         <category android:name="com.push_notification" />
      </intent-filter>
- </receiver> -->
+ </receiver>
 
         <!-- <meta-data  android:name="com.dieam.reactnativepushnotification.notification_foreground"
                     android:value="false"/>

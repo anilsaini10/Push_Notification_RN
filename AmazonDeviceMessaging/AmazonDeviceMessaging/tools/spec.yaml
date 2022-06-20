@@ -1,0 +1,43 @@
+# ADM Properties
+name: ADM
+version: 1.1.0
+info: Amazon Device Messaging (ADM) lets you send messages to Kindle Fire devices that run your app, so you can keep users up to date and involved.
+registrationText: Follow the instructions here to register your app
+registrationURL: https://developer.amazon.com/sdk/adm/credentials.html
+minApiLevel: 8
+minPluginVersion: 1.0.3
+
+features:
+    - name: core
+      optional: false
+      # API Library to be include
+      libs: 
+        - jar: amazon-device-messaging-1.1.0.jar
+          bundled: false
+      customFiles:
+        - path: ./assets/api_key.txt
+          content: "[Api Key]"
+      # Android Manifest element required
+      xmlEntries:
+        - parent: manifest
+          attributes:
+            - name: xmlns:amazon
+              value: http://schemas.amazon.com/apk/res/android
+          elements:
+            - <permission android:name="[ADM Package Name].permission.RECEIVE_ADM_MESSAGE" 
+                          android:protectionLevel="signature" />
+            - <uses-permission android:name="[ADM Package Name].permission.RECEIVE_ADM_MESSAGE" />
+            - <uses-permission android:name="android.permission.INTERNET" />
+            - <uses-permission android:name="android.permission.WAKE_LOCK" />
+            - <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" />
+        - parent: application
+          elements:
+            - <amazon:enable-feature android:name="com.amazon.device.messaging" android:required="true" />
+            - <service android:name="[ADM Service Class Name]" android:exported="false" />
+            - <receiver android:name="[ADM Receiver Class Name]"
+                        android:permission="com.amazon.device.messaging.permission.SEND">
+                <intent-filter>
+                  <action android:name="com.amazon.device.messaging.intent.REGISTRATION" />
+                  <action android:name="com.amazon.device.messaging.intent.RECEIVE" />
+                </intent-filter>
+              </receiver>

@@ -27,6 +27,14 @@ var AWS = require('aws-sdk');
 AWS.config.update({region:'us-east-1'});
 
 // hex_md5: 8c50795fee578cad933eac0d64eb7a0e
+// hex_md5: 8c:50:79:5f:ee:57:8c:ad:93:3e:ac:0d:64:eb:7a:0e
+// SHA-256 532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25
+
+
+// Client ID:	amzn1.application-oa2-client.cc223fc851a6468e958cc33ed95d3c44
+// Client Secret:	5bed2a6f18676288f2c9d746470f7c36d6d27d122df57af754d279a1af2cf7e6
+
+// android create project --path /Drive D/React Native/Expo_2022/Push_Notification --target 8XXCSWVCOBG6GYQK --activity ADMActivity --package com.example.amazon.adm
 
 const App = () => {
 
@@ -122,7 +130,9 @@ const App = () => {
     // console.log(">>>>str_hmac_md5:", str_hmac_md5v);
  
     sha256("Test").then( hash => {
+
       console.log("SHA-256 =>",hash);
+
   })
  
   }, [])
